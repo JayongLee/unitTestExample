@@ -9,15 +9,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
+// Mockito 기능 활성화, Mock 객체 자동 초기화
 @ExtendWith(MockitoExtension.class)
 class UserServiceTest {
 
@@ -27,14 +26,16 @@ class UserServiceTest {
     @InjectMocks
     private UserService userService;
 
+    // 클래스 변수로 선언
     private SignUpRequestDto signUpRequestDto;
     private LoginRequestDto loginRequestDto;
     private Users user;
 
+    // 각 테스트 실행 전 실행되는 메서드
     @BeforeEach
     void setUp() {
-//        MockitoAnnotations.openMocks(this);
 
+        // Mock 객체를 새 상태로 초기화
         reset(userRepository);
 
         // 필드 초기화
